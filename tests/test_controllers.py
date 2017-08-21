@@ -23,16 +23,18 @@ def test_vote(fixture_user, fixture_event):
     vote_unacceptable = 6
 
     assert controllers.voting.vote(fixture_user, vote_acceptable, fixture_event) is True
-    assert controllers.voting.vote(fixture_user, vote_unacceptable, fixture_event) is False
+    with pytest.raises(controllers.voting.BadVoteValueError):
+        controllers.voting.vote(fixture_user, vote_unacceptable, fixture_event)
 
 
 def test_remove_subs(fixture_user):
     persistence.subscriptions.remove_all = Mock(return_value=True)
 
-    assert controllers.subscriptions.remove_all(fixture_user) is True
+    assert controllers.subscriptions.unsubscribe_user(fixture_user) is True
 
 
 def test_schedule():
-    assert controllers.schedule.get_schedule('2017-06-01') == '2017-06-01'
+    assert controllers.schedule.get_schedule('2017-06-01') == 'Schedule for 2017-06-01'
     with pytest.raises(controllers.schedule.NoSuchDayError):
         controllers.schedule.get_schedule('2020-06-04')
+
