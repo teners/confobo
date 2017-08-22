@@ -1,2 +1,1 @@
-pytest
-telepot
+telepot==12.2
