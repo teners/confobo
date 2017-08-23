@@ -1,5 +1,5 @@
-from .errors import NoSuchCommandError, WrongArgsNumberError
-from .decorators import bindings
+from confobo.command.decorators import bindings
+from confobo.command.errors import NoSuchCommandError, WrongArgsNumberError
 from confobo.config import SEPARATOR
 
 

@@ -1,6 +1,7 @@
 import pytest
 from confobo.config import SEPARATOR
-from confobo.command import command, execute_command, pass_user_data
+from confobo.command.decorators import command, pass_user_data
+from confobo.command.execution import execute_command
 from confobo.command.errors import WrongArgsNumberError, NoSuchCommandError
 
 msg_example = {'message_id': 1,
@@ -53,5 +54,3 @@ def test_passing_user_data():
 
     with pytest.raises(TypeError):
         pass_user_data(f_no_user_data)
-
-

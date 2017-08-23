@@ -1,7 +1,7 @@
 from telepot import glance
 
-from .execution import execute_command
-from .errors import NoSuchCommandError, WrongArgsNumberError
+from confobo.command.errors import NoSuchCommandError, WrongArgsNumberError
+from confobo.command.execution import execute_command
 
 
 def on_chat_message(msg, bot):

@@ -1,4 +1,4 @@
-from .model import Command
+from confobo.command.model import Command
 
 bindings = {}
 

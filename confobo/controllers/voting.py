@@ -21,7 +21,11 @@ def vote(user: User, choice: int, event: Event) -> bool:
 
     :return: True if the vote was saved, False otherwise
     """
+
     if LOWEST_VOTE <= choice <= HIGHEST_VOTE:
         return voting.save_vote(user, choice, event)
     else:
-        raise BadVoteValueError('You can give from {} to {} stars, not {}'.format(LOWEST_VOTE, HIGHEST_VOTE, choice))
+        error_message = 'You can give from {} to {} stars, not {}'
+        raise BadVoteValueError(error_message.format(LOWEST_VOTE,
+                                                     HIGHEST_VOTE,
+                                                     choice))

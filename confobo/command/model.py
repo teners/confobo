@@ -9,7 +9,8 @@ class Command:
         self.desc = desc
         sig = inspect.signature(f)
         self.max_args = len(sig.parameters)
-        self.min_args = len([p for p in sig.parameters.values() if p.default is inspect._empty])
+        self.min_args = len([p for p in sig.parameters.values()
+                             if p.default is inspect._empty])
         self.args = list(sig.parameters.keys())
         self._needs_user_data = False
 
@@ -19,7 +20,8 @@ class Command:
         if sep != ' ':
             sep += ' '
         args = ' [{}]'.format(sep.join(self.args)) if self.args else ''
-        return '{cmd}{args}: {desc}'.format(cmd=self.text, args=args, desc=self.desc)
+        command = '{cmd}{args}: {desc}'
+        return command.format(cmd=self.text, args=args, desc=self.desc)
 
     @property
     def needs_user_data(self):
@@ -30,7 +32,8 @@ class Command:
         if not value:
             raise NotImplemented()
         if 'user_data' not in self.args:
-            raise TypeError('{}() must take a parameter named \'user_data\''.format(self.f.__name__))
+            error_message = '{}() must take a parameter named \'user_data\''
+            raise TypeError(error_message.format(self.f.__name__))
         self.max_args -= 1
         self.min_args -= 1
         self.args.remove('user_data')

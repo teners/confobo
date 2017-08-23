@@ -1,5 +1,5 @@
 import time
-from confobo import loop
+from confobo import get_message_loop
 from confobo.command import command, bindings, pass_user_data
 from confobo.controllers.voting import vote, BadVoteValueError
 from confobo.controllers.schedule import get_schedule, NoSuchDayError
@@ -58,6 +58,7 @@ def help_me():
 
 
 if __name__ == '__main__':
+    loop = get_message_loop()
     loop.run_as_thread()
 
     while True:
