@@ -38,3 +38,4 @@ jobs:
           command: |
             . venv/bin/activate
             flake8 --statistics
+            pylint --rcfile=.pylintrc confobo

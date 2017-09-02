@@ -1,0 +1,23 @@
+[MESSAGES CONTROL]
+disable=
+    missing-docstring,
+    too-few-public-methods
+
+[REPORTS]
+reports=no
+score=yes
+
+[FORMAT]
+expected-line-ending-format=LF
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+indent-after-paren=4
+indent-string='    '
+
+[VARIABLES]
+init-import=no
+
+[CLASSES]
+valid-classmethod-first-arg=cls
+
+[IMPORTS]
+allow-wildcard-with-all=no
