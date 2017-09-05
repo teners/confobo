@@ -37,5 +37,5 @@ jobs:
           name: run linters
           command: |
             . venv/bin/activate
-            flake8 --statistics
+            flake8 --statistics confobo
             pylint --rcfile=.pylintrc confobo
